@@ -4,6 +4,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
+import android.util.Log
 
 class NetfoxIosModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
@@ -12,14 +13,21 @@ class NetfoxIosModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
+  // Initialize method
   @ReactMethod
-  fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  fun initializeNetfox(promise: Promise) {
+      Log.w(NAME, "Warning: NetfoxIos is only available on iOS. initializeNetfox was called on a non-iOS platform.")
+      promise.reject("PLATFORM_NOT_SUPPORTED", "NetfoxIos is only available on iOS.")
+  }
+
+  // Show method
+  @ReactMethod
+  fun showNetfox(promise: Promise) {
+      Log.w(NAME, "Warning: NetfoxIos is only available on iOS. showNetfox was called on a non-iOS platform.")
+      promise.reject("PLATFORM_NOT_SUPPORTED", "NetfoxIos is only available on iOS.")
   }
 
   companion object {
-    const val NAME = "NetfoxIos"
+    const val NAME = "NetfoxIosModule"
   }
 }
