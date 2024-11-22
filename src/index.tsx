@@ -17,6 +17,25 @@ const NetfoxIos = NativeModules.NetfoxIos
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return NetfoxIos.multiply(a, b);
+export async function initializeNetfox() {
+  if (Platform.OS === 'ios' && NetfoxIos.initializeNetfox) {
+    try {
+      await NetfoxIos.initializeNetfox();
+    } catch (error) {
+      console.error('Error initializing Netfox:', error);
+    }
+  }
+}
+
+export async function showNetfox() {
+  if (Platform.OS !== 'ios') {
+    console.warn('Netfox is only available on iOS.');
+    return;
+  }
+
+  try {
+    await NetfoxIos.showNetfox();
+  } catch (error) {
+    console.error('Error showing Netfox interface:', error);
+  }
 }
