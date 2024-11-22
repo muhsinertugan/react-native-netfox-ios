@@ -1,4 +1,4 @@
-package netfoxiosexample
+package com.netfoxiosexample
 
 import android.app.Application
 import com.facebook.react.PackageList

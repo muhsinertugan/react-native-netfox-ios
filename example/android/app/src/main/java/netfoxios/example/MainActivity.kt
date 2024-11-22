@@ -1,4 +1,4 @@
-package netfoxiosexample
+package com.netfoxiosexample
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
